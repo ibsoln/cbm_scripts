@@ -5,12 +5,7 @@
 # Runs against the live/staged website
 
 
-
-import re
-import os
-import shutil
-
-import time, glob
+import glob
 
 packages = ["ktx", "java", "jvm"]
 
