@@ -4,21 +4,10 @@
 #
 # Runs against the live/staged website
 
-
-# from genericpath import isfile
 import re
-import os
-from pathlib import Path
-import validators
-import glob
 import requests
+import validators.url
 import web_page_service as ws
-# import mypackages.web_page_service as ws
-    # import web_page_class as wc
-from urllib import error
-from urllib import request
-from urllib import response
-# import urllib3
 
 
 def get_data(argFile):
@@ -48,7 +37,6 @@ def validate_hrefs_on_page(html_to_check,
     search_pattern_Html_Hrefs = '(?:href=)(".*")'
     working_url = 0
     non_working_url = 0
-    # fname = '/Users/ianbridge/CouchbaseDocs/ibsoln.github.io/local/couchbase-lite/3.0/c/gs-downloads.html'
 
     with open(outfilename, 'w') as of:
         print(f"Writing to {of.name}")
@@ -80,20 +68,38 @@ def validate_hrefs_on_page(html_to_check,
         print(f'Validated {page_to_check} \n and verified {working_url} url; rejected {non_working_url}')
 
 
-if __name__ == "__main__":
+
+def main():
+
+    # BEGIN CONFIG
+    #
     # page_to_check = 'https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html'
     page_to_check = 'https://docs.couchbase.com/couchbase-lite/3.0/c/gs-downloads.html'
+
+    # Set the output file name
     outfilename = f"./adoc_diag_href_tags_cbl.csv"
+
     # Report only failing URLS
     exceptions_only = True
+
     # Report result of all checks
     # exceptions_only = False
+    #
+    # END CONFIG
 
+    # Initialize web service class
     this_ws = ws.web_page_class()
 
+    # Check URL exists and scrape the HTML to valiadate_hrefs_on_page for checking
     if this_ws.get_endpoint(page_to_check):
         validate_hrefs_on_page(this_ws.html,
                                outfilename,
                                exceptions_only)
+
+
+
+if __name__ == "__main__":
+    print(f'Running {__name__}')
+    main()
 
 

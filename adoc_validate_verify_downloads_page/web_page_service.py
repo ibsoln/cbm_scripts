@@ -1,10 +1,6 @@
 '''dependencies'''
-from abc import abstractmethod, ABC
 import requests
-# import selenium
-import bs4
 import validators
-
 
 class web_page_class:
     url = ''
@@ -71,6 +67,6 @@ def main(this_ws: web_page_class):
         print(ws.response_content)
 
 
-print(f'Running {__name__}')
 if __name__ == '__main__':
+    print(f'Running {__name__}')
     main(web_page_service())
