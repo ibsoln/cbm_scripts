@@ -4,24 +4,16 @@
 # scrapes content from output of Jira filters and formats into a set of .adoc lists
 # one set for each list type inside each component
 #
-from genericpath import isfile
-from dataclasses import dataclass
-from typing import Any
-from bs4 import BeautifulSoup as BS4
-import re
-from pathlib import Path
-import shutil
-from urllib import request as rq
-import time, glob
-
-import urllib3
-import validators
-import time
-import glob
 import urllib.error
 import urllib.request
 import urllib.response
+from dataclasses import dataclass
+from pathlib import Path
+
 import requests
+import validators
+from bs4 import BeautifulSoup as BS4
+
 
 @dataclass
 class RESPONSE:

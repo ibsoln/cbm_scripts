@@ -65,7 +65,7 @@ def validate_hrefs_on_page(html_to_check,
             if msg:
                 of.write(f'{this_url},{msg}{newline}')
 
-        print(f'Validated {page_to_check} \n and verified {working_url} url; rejected {non_working_url}')
+        print(f'Validated and verified {working_url} url; rejected {non_working_url}')
 
 
 
