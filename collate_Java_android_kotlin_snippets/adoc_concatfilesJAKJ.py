@@ -26,24 +26,28 @@ outfilenames = {
   "jvm": '/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/java/examples/codesnippet_collection.java'
 }
 
-for package in packages:
-  print(package)
-  filenames = glob.glob(packages_names[package])
-  with open(outfilenames[package], 'w') as outfile:
-      print(f"Writing to {outfile.name}")
-      # for filename in glob.glob('*.txt'):
-      for filename in filenames:
-          if filename == outfilenames[package]:
-              # don't want to copy the output into the output
-              continue
-          outfile.write(f"\n\n// MODULE_BEGIN --{filename} \n")
-          with open(filename, 'r') as readfile:
-              print(f"Including {filename}\n")
-              outfile.write(readfile.read() + "\n\n")
-              outfile.write(f"\n// MODULE_END --{filename} \n\n")
-              # shutil.copyfileobj(readfile, outfile)
+def main():
+    for package in packages:
+      print(package)
+      filenames = glob.glob(packages_names[package])
+      with open(outfilenames[package], 'w') as outfile:
+          print(f"Writing to {outfile.name}")
+          # for filename in glob.glob('*.txt'):
+          for filename in filenames:
+              if filename == outfilenames[package]:
+                  # don't want to copy the output into the output
+                  continue
+              outfile.write(f"\n\n// MODULE_BEGIN --{filename} \n")
+              with open(filename, 'r') as readfile:
+                  print(f"Including {filename}\n")
+                  outfile.write(readfile.read() + "\n\n")
+                  outfile.write(f"\n// MODULE_END --{filename} \n\n")
+                  # shutil.copyfileobj(readfile, outfile)
 
 
+
+if __name__ == "__main__":
+  main()
 
 
 

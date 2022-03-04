@@ -2,6 +2,9 @@
 import requests
 import validators
 
+
+
+
 class web_page_class:
     url = ''
     is_valid = ''

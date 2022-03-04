@@ -14,6 +14,25 @@ import requests
 import validators
 from bs4 import BeautifulSoup as BS4
 
+import argparse
+
+
+def parse_arguments():
+  parser = argparse.ArgumentParser()
+  parser.add_argument("-a", "--all", help="Process all modules")
+  parser.add_argument("-s", "--sgw", help="Process SGW modules")
+  parser.add_argument("-c", "--cbl", help="Process CBL modules")
+  args = parser.parse_args()
+  if args.all:
+    return 'all'
+  if args.sgw:
+    return 'sgw'
+  if args.cbl:
+    return 'cbl'
+  return None
+
+
+
 
 @dataclass
 class RESPONSE:
@@ -192,7 +211,17 @@ def composeAdocContent(argProductStubLists,
 def main():
   # Initialize
   release_tag ='3-0-0'
-  Products = ['SG', 'CBL']
+
+  mode = parse_arguments()
+  if mode:
+    if mode in 'all':
+      Products = ['SG', 'CBL']
+    if mode in 'sgw':
+      Products = ['SG']
+    if mode in 'cbl':
+      Products = ['CBL']
+  else:
+    Products = []
 
   ComponentsDict = {
     'CBL': ['Android','C','Net', 'JK', 'iOS', 'Tools'],

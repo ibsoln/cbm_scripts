@@ -8,6 +8,32 @@ import re
 import requests
 import validators.url
 import web_page_service as ws
+import argparse
+
+
+
+
+def get_args():
+
+    # Set default values
+    arg_page =  'https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html'
+    arg_out = f"./output/adoc_diag_href_tags_cbl.csv"
+    arg_except = False
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--page", help="Define the page to be checked")
+    parser.add_argument("-o", "--out", help="Define the output file")
+    parser.add_argument("-e", "--exceptions", help="Report only on exceptions")
+    args = parser.parse_args()
+
+    if args.page:
+        arg_page = args.page
+    if args.out:
+        arg_out = args.out
+    if args.exceptions:
+        arg_except = args.exceptions
+    return (arg_page, arg_out, arg_except)
+
 
 
 def get_data(argFile):
@@ -30,16 +56,25 @@ def is_ValidUrl(argURL):
     return (result, msg)
 
 
-def validate_hrefs_on_page(html_to_check,
+def validate_hrefs_on_page(page_to_check,
+                           html_to_check,
                            outfilename,
                            exceptions_only):
     newline = '\n'
     search_pattern_Html_Hrefs = '(?:href=)(".*")'
     working_url = 0
     non_working_url = 0
+    expected_errors = 0
+    known_errors = [
+        'https://www.linkedin.com/company/couchbase',
+        'https://support.couchbase.com',
+        'https://blog.couchbase.com',
+        'https://blog.couchbase.com/category/couchbase-mobile/?ref=blog-menu'
+    ]
 
     with open(outfilename, 'w') as of:
         print(f"Writing to {of.name}")
+        print(f"Processing {page_to_check}")
         of.write(f'URL, filepath, filename,message{newline}')
 
         search_text = html_to_check
@@ -50,40 +85,45 @@ def validate_hrefs_on_page(html_to_check,
 
             if ".adoc" in this_url:
                 # Trap any Asiidoc/Antora malformed URI
-                non_working_url += 1
-                msg = "Antora - Malformed"
+                if ('/edit/' in this_url):
+                    #  Ignore the 'Edit on Github' links for this purpose
+                    expected_errors += 1
+                else:
+                    non_working_url += 1
+                    msg = "Antora - Malformed"
             else:
                 # Compile the formed url to test
-                if ('packages' in this_url):
+                if ('packages' in this_url) or ('http' in this_url):
                     (result, msg) = is_ValidUrl(this_url)
                     if result:
                         working_url += 1
                         if exceptions_only:
                             msg=''
                     else:
-                        non_working_url += 1
+                        if this_url in known_errors:
+                            # Accept that some domains reject crawler pings with 403 (eg Couchbase)
+                            msg=''
+                            expected_errors += 1
+                        else:
+                            non_working_url += 1
             if msg:
                 of.write(f'{this_url},{msg}{newline}')
 
-        print(f'Validated and verified {working_url} url; rejected {non_working_url}')
+        print(f'Validated and verified {working_url} url; rejected {non_working_url}; expected {expected_errors}')
 
 
 
-def main():
+def main( ):
 
-    # BEGIN CONFIG
-    #
-    # page_to_check = 'https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html'
-    page_to_check = 'https://docs.couchbase.com/couchbase-lite/3.0/c/gs-downloads.html'
+    (page_to_check, outfilename, exceptions_only) = get_args()
 
-    # Set the output file name
-    outfilename = f"./adoc_diag_href_tags_cbl.csv"
 
-    # Report only failing URLS
-    exceptions_only = True
+    known_errors = [
+        'https://support.couchbase.com',
+        'https://blog.couchbase.com',
+        'https://www.linkedin.com/company/couchbase'
+    ]
 
-    # Report result of all checks
-    # exceptions_only = False
     #
     # END CONFIG
 
@@ -92,7 +132,8 @@ def main():
 
     # Check URL exists and scrape the HTML to valiadate_hrefs_on_page for checking
     if this_ws.get_endpoint(page_to_check):
-        validate_hrefs_on_page(this_ws.html,
+        validate_hrefs_on_page(page_to_check,
+                               this_ws.html,
                                outfilename,
                                exceptions_only)
 

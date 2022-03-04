@@ -14,9 +14,7 @@ import urllib.error
 import urllib.request
 import urllib.response
 from genericpath import isfile
-
-
-# import urllib3
+from class_cli_args import cli_arguments_service as cs
 
 def get_data(argFile):
   f = open(argFile)
@@ -48,34 +46,50 @@ def is_ValidUrl (argURL):
 
 def main():
 
-  outDir = f"{os.getcwd()}/output/"
-  processing_list = []
-  valid_processes = ['cbl','sgw','tutorials']
+  roots = {"ibsoln": "https://ibsoln.github.io/stage/3.0-GA/",
+           "staging": "https://docs-staging.couchbase.com/"}
 
-  # Point at local build site
-
-  roots = { "stage300":"/Users/ianbridge/CouchbaseDocs/ibsoln.github.io/stage/stage300/",
-              "staging":"https://docs-staging.couchbase.com/"}
-
-  rootDirs = { "sgw":"sync-gateway/current/**",
-              "cbl":"couchbase-lite/current/**",
-              "tutorials":"tutorials/**"}
+  rootDirs = {"sgw": "sync-gateway/current/**",
+              "cbl": "couchbase-lite/current/**",
+              "tutorials": "tutorials/**"}
 
   outfiles = {"sgw": "adoc_diag_bad_xrefs_sgw.csv",
               "cbl": "adoc_diag_bad_xrefs_cbl.csv",
-              "tutorial":"adoc_diag_bad_xrefs_tutorials.csv"}
+              "tutorial": "adoc_diag_bad_xrefs_tutorials.csv"}
+  actual_processes=[]
+  print(actual_processes)
+  actual_processes = ['cbl','sgw','tutorials']
+  print(actual_processes)
+  valid_processes = actual_processes.copy()
+  print(actual_processes)
+  valid_processes.append('all')
+  print(actual_processes)
+  valid_targets = ['ibsoln', 'staging']
 
-  # url_roots = ['http://localhost:5000/sync-gateway/current/',
-  #             'https://ibsoln.github.io/stage/stage300/couchbase-lite/current/']
-  # url_roots = ['https://ibsoln.github.io/stage/3.0-GA/sync-gateway/current/',
-  #             'https://ibsoln.github.io/stage/3.0-GA/couchbase-lite/current/']
-  url_roots = ['https://docs-staging.couchbase.com/sync-gateway/current/',
-              'https://docs-staging.couchbase.com/couchbase-lite/current/']
+  our_args = {}
 
-  # outfilename = outDir + 'adoc_diag_bad_xrefs.csv'
-  # outfilename = outDir + 'href_tags_sgw.csv'
-  # url_root = 'https://ibsoln.github.io/stage/stage300/sync-gateway/current/'
-  # url_root = 'https://ibsoln.github.io/stage/stage300/couchbase-lite/current/'
+  arg_items = {
+    "-o": {"flag": "--out", "default": f"{os.getcwd()}/output/", "help": "Defines the output file path"},
+    "-p": {"flag": "--process", "default": "all", "help": "Defines components to be processed (sgw/cbl/tutorials/all)", "choices" : valid_processes},
+    "-b": {"flag": "--build", "default": "ibsoln", "help": "Select the target build site to check (ibsoln/staging)", "choices" : valid_targets},
+  }
+
+  our_args = cs.cli_arguments_class()
+  if our_args.add_args(arg_items):
+    outDir = our_args.cli_arguments.get('out')
+    this_process = our_args.cli_arguments.get('process')
+    if this_process == 'all':
+      process_list = actual_processes
+    else:
+      process_list = [this_process]
+    build_site = our_args.cli_arguments.get('build')
+
+
+    print(f"Targetting {build_site}\nProcessing {len(process_list)} components\nWriting to {outDir}")
+  #
+  # url_roots = ['https://docs-staging.couchbase.com/sync-gateway/current/',
+  #             'https://docs-staging.couchbase.com/couchbase-lite/current/']
+
   newline = '\n'
   search_pattern_Xrefs = '((.*xref.*)|(.*url-.*)|(.*http.*pfx.*)|(.*http.*adoc.*))'
   # search_pattern_Xrefs = '{((.*xref.*)|(.*url-.*)|(.*pfx.*)|(.*adoc.*))}'
@@ -83,16 +97,13 @@ def main():
   search_pattern_Html_Hrefs = '(?:href=)(".*")'
 
 
-  for i in range(len(rootDirs)):
-    # outfilename = getOutputFile( argName=outfiles[i], argPath=outDir )
-    outfilename = outDir+outfiles[i]
-    root_dir = rootDirs[i]
-    # url_root = url_roots[i]
+  for i in process_list:
+    outfilename = f"{outDir}{outfiles.get(i)}"
+    root_dir = f"{roots.get(build_site)}{rootDirs[i]}"
     cnt_processed = 0
     cnt_errors = 0
     print(f'Processing {root_dir}')
     with open(outfilename,'w') as of:
-      # thisDir = os.path.dirname(os.path.realpath(__file__))
       of.write(f'string, file {newline}')
       fileList = glob.glob(root_dir,recursive=True)
       for fname in fileList:
