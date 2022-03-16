@@ -10,20 +10,26 @@ import validators.url
 import web_page_service as ws
 import argparse
 
+program_name = "verifyValidateDownloadPage"
+program_version = 2.0
+program_description = 'Validates all links scraped from the designated page and outputs results to a specified output file'
 
-
+# Command Line Parameters are as shown in 'get_args()' below
 
 def get_args():
 
     # Set default values
-    arg_page =  'https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html'
+    arg_page = 'https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html'
+    arg_page = 'https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html'
     arg_out = f"./output/adoc_diag_href_tags_cbl.csv"
     arg_except = False
 
     parser = argparse.ArgumentParser()
+    # BEGIN - COMMAND LINE PARAMETERS
     parser.add_argument("-p", "--page", help="Define the page to be checked")
     parser.add_argument("-o", "--out", help="Define the output file")
     parser.add_argument("-e", "--exceptions", help="Report only on exceptions")
+    # END - COMMAND LINE PARAMETERS
     args = parser.parse_args()
 
     if args.page:
@@ -33,7 +39,6 @@ def get_args():
     if args.exceptions:
         arg_except = args.exceptions
     return (arg_page, arg_out, arg_except)
-
 
 
 def get_data(argFile):
@@ -75,6 +80,9 @@ def validate_hrefs_on_page(page_to_check,
     with open(outfilename, 'w') as of:
         print(f"Writing to {of.name}")
         print(f"Processing {page_to_check}")
+        if exceptions_only:
+            print('Reporting only exceptions')
+
         of.write(f'URL, filepath, filename,message{newline}')
 
         search_text = html_to_check
@@ -127,9 +135,10 @@ def main( ):
     #
     # END CONFIG
 
+    # print(f'Processing - {page_to_check}\n Writing - {outfilename}\n Exceptions-only - {exceptions_only}')
+
     # Initialize web service class
     this_ws = ws.web_page_class()
-
     # Check URL exists and scrape the HTML to valiadate_hrefs_on_page for checking
     if this_ws.get_endpoint(page_to_check):
         validate_hrefs_on_page(page_to_check,
@@ -140,7 +149,7 @@ def main( ):
 
 
 if __name__ == "__main__":
-    print(f'Running {__name__}')
+    print(f'Running {program_name} version {program_version}')
     main()
 
 

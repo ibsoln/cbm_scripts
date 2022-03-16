@@ -17,22 +17,17 @@ from bs4 import BeautifulSoup as BS4
 import argparse
 
 
+fixed_search_string = 'project = CBL AND component in (iOS, LiteCore) AND type = Bug AND fixVersion  = 3.0.1  AND level = "Public" AND affectedVersion != Lithium AND resolution = Fixed ORDER BY component'
+
+
 def parse_arguments():
   parser = argparse.ArgumentParser()
-  parser.add_argument("-a", "--all", help="Process all modules")
-  parser.add_argument("-s", "--sgw", help="Process SGW modules")
-  parser.add_argument("-c", "--cbl", help="Process CBL modules")
+  parser.add_argument("-m", "--mode", choices=['sgw', 'cbl', 'all'], help="Process all modules")
+  parser.add_argument("-r", "--release", help="Provide release number in m-m-m format")
   args = parser.parse_args()
-  if args.all:
-    return 'all'
-  if args.sgw:
-    return 'sgw'
-  if args.cbl:
-    return 'cbl'
+  if args.mode and args.release:
+    return args
   return None
-
-
-
 
 @dataclass
 class RESPONSE:
@@ -212,16 +207,19 @@ def main():
   # Initialize
   release_tag ='3-0-0'
 
-  mode = parse_arguments()
-  if mode:
-    if mode in 'all':
+  args = parse_arguments()
+  if args.mode:
+    if args.mode in 'all':
       Products = ['SG', 'CBL']
-    if mode in 'sgw':
+    if args.mode in 'sgw':
       Products = ['SG']
-    if mode in 'cbl':
+    if args.mode in 'cbl':
       Products = ['CBL']
   else:
     Products = []
+
+  if args.release:
+    release_tag = args.release
 
   ComponentsDict = {
     'CBL': ['Android','C','Net', 'JK', 'iOS', 'Tools'],
