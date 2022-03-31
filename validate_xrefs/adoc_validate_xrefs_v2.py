@@ -3,8 +3,6 @@
 # Objective = Identify any malformed or unresolved asciidoc XREFs remaining in the published HTML site
 #  Runs against a local copy of the website either 'local' or 'staged'
 
-
-
 # import validators
 import glob
 import os
@@ -45,8 +43,11 @@ def is_ValidUrl (argURL):
 
 
 def main():
+  #
+  # roots = {"ibsoln": "https://ibsoln.github.io/stage/3.0-GA/",
+  #          "staging": "https://docs-staging.couchbase.com/"}
 
-  roots = {"ibsoln": "https://ibsoln.github.io/stage/3.0-GA/",
+  roots = {"ibsoln": "/Users/ianbridge/CouchbaseDocs/ibsoln.github.io/local/",
            "staging": "https://docs-staging.couchbase.com/"}
 
   rootDirs = {"sgw": "sync-gateway/current/**",
@@ -105,7 +106,7 @@ def main():
     print(f'Processing {root_dir}')
     with open(outfilename,'w') as of:
       of.write(f'string, file {newline}')
-      fileList = glob.glob(root_dir,recursive=True)
+      fileList = glob.glob(root_dir, recursive=True)
       for fname in fileList:
         if isfile(fname):
           if 'htm' in pathlib.Path(fname).suffix:

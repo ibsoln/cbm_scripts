@@ -55,7 +55,8 @@ def main():
   # Point at local build site
 
   roots = { "stage300":"/Users/ianbridge/CouchbaseDocs/ibsoln.github.io/stage/stage300/",
-              "staging":"https://docs-staging.couchbase.com/"}
+              "staging":"https://docs-staging.couchbase.com/",
+            "local":"/Users/ianbridge/CouchbaseDocs/ibsoln.github.io/local"}
 
   rootDirs = { "sgw":"sync-gateway/current/**",
               "cbl":"couchbase-lite/current/**",
@@ -85,7 +86,8 @@ def main():
 
   for i in range(len(rootDirs)):
     # outfilename = getOutputFile( argName=outfiles[i], argPath=outDir )
-    outfilename = outDir+outfiles[i]
+    x=outfiles[valid_processes(i)]
+    outfilename = f'{outDir}{x}'
     root_dir = rootDirs[i]
     # url_root = url_roots[i]
     cnt_processed = 0
