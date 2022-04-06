@@ -3,14 +3,14 @@ import cli_arguments_service as cs
 import os
 
 def main():
-    # outfile = f"{os.getcwd()}/output/"
+    # outfile = f"{os.getcwd()}/_adoc_output/"
 
     our_args = {}
 
     arg_items = {
-        "-o": {"flag": "--out", "default": f"{os.getcwd()}/output/", "help": "Defines the output file path" },
-        "-o": {"flag": "--out", "default": f"{os.getcwd()}/output/", "help": "Defines the output file path"},
-        "-o": {"flag": "--out", "default": f"{os.getcwd()}/output/", "help": "Defines the output file path"},
+        "-o": {"flag": "--out", "default": f"{os.getcwd()}/_adoc_output/", "help": "Defines the _adoc_output file path" },
+        "-o": {"flag": "--out", "default": f"{os.getcwd()}/_adoc_output/", "help": "Defines the _adoc_output file path"},
+        "-o": {"flag": "--out", "default": f"{os.getcwd()}/_adoc_output/", "help": "Defines the _adoc_output file path"},
     }
 
     our_args = cs.cli_arguments_class()

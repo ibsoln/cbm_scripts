@@ -359,7 +359,7 @@ properties:
 
 
               A common value is `["Content-Type"]` as clients use the `Content-Type:
-              application/json` header when sending data as JSON in the body of POST/PUT
+              application/json` header when sending _adoc_input as JSON in the body of POST/PUT
               requests.
 
 
@@ -594,17 +594,17 @@ properties:
       redaction_level:
         type: string
         default: none
-        description: "Optionally, log files can be redacted.\nThis means that user-data,\
-          \ considered to be private, is removed.\nSuch data includes:\n\n  - Key/value\
+        description: "Optionally, log files can be redacted.\nThis means that user-_adoc_input,\
+          \ considered to be private, is removed.\nSuch _adoc_input includes:\n\n  - Key/value\
           \ pairs in JSON documents\n\n  - Usernames\n\n  - Query-fields that reference\
           \ key/value pairs and/or usernames\n\n  - Names and email addresses retrieved\
           \ during product registration\n\n  - Extended attributes\n\nThis redaction\
-          \ of user-data is referred to as partial redaction.\n\nTo enable it, set\
+          \ of user-_adoc_input is referred to as partial redaction.\n\nTo enable it, set\
           \ this property to `\"redaction_level\" : \"partial\"` in the configuration\
           \ file:\n\n"
       console:
         type: object
-        description: Settings for the console output logging.
+        description: Settings for the console _adoc_output logging.
         properties:
           enabled:
             type: boolean
@@ -691,7 +691,7 @@ properties:
           color_enabled:
             type: boolean
             default: false
-            description: Use ANSI color codes in the console output (Linux/MacOS only).
+            description: Use ANSI color codes in the console _adoc_output (Linux/MacOS only).
           file_output:
             type: string
             description: 'Changes require full logging re-initialization

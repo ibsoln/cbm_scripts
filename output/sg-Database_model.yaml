@@ -72,7 +72,7 @@ properties:
           For example:
 
           ```curl -X PUT username:password@localhost:4985/db/_config -H "Content-Type:
-          application/json" --data-binary ''{"guest": {"disabled":false}}```
+          application/json" --_adoc_input-binary ''{"guest": {"disabled":false}}```
 
 
           '
@@ -514,7 +514,7 @@ properties:
               \n*Enterprise Edition Only*:\n  The `max_number` value can be tuned\
               \ to optimize for cache hits (requests that are handled using the cache),\
               \ as opposed to cache misses (requests that require a round-trip to\
-              \ Couchbase Server to fetch data).\n  The cache hit/miss ratio can be\
+              \ Couchbase Server to fetch _adoc_input).\n  The cache hit/miss ratio can be\
               \ obtained with the following:\n\n```cache hit/miss ratio``` = ```cache.chan_cache_hits```\
               \ / ```cache.chan_cache_misses```\n\nIncreasing the `max_number` value\
               \ can increase the cache hit/miss ratio, resulting in better cache utilization.\n\
@@ -582,7 +582,7 @@ properties:
               the Admin REST API.
 
 
-              Use *only* for testing purposes if it is necessary to flush data in
+              Use *only* for testing purposes if it is necessary to flush _adoc_input in
               between tests to start with a clean DB.
 
 
@@ -777,7 +777,7 @@ properties:
                   when calling the OP''s authorize endpoint.
 
 
-                  If the scope property is defined in the config (as an array of string
+                  If the scope property is defined in the _adoc_config (as an array of string
                   values), it will override this scope.
 
 
@@ -862,7 +862,7 @@ properties:
                   treats the username as [user_prefix]_[subject].
 
                   By default user_prefix is the issuer, but can be customized in the
-                  Sync Gateway provider config.
+                  Sync Gateway provider _adoc_config.
 
                   Subject is always the sub claim in the token.
 
@@ -948,7 +948,7 @@ properties:
     description: 'Use the `enable_shared_bucket_access` property to define whether
       to use extended attributes to store sync metadata.
 
-      This is required to enable mobile-to-server data sync (_mobile convergence_).
+      This is required to enable mobile-to-server _adoc_input sync (_mobile convergence_).
 
 
       You can learn more about this functionality in [Syncing with Couchbase Server](sync-with-couchbase-server.html)

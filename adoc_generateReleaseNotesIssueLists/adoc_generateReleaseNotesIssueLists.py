@@ -2,8 +2,9 @@ program = { 'name': 'adoc_generateReleaseNotesIssueLists', 'version' : '2.0', 'd
             'description': 'Generates cut-and-paste-ready content for the inclusion file pn-issue-lists.adoc'}
 
 # Generates cut-and-paste-ready content for the inclusion file pn-issue-lists.adoc
-# scrapes content from output of Jira filters and formats into a set of .adoc lists
+# scrapes content from _adoc_output of Jira filters and formats into a set of .adoc lists
 # one set for each list type inside each component
+# run this from CouchbaseDocs root (ie parent of sgw and cbl)
 #
 import urllib.error
 import urllib.request
@@ -21,9 +22,14 @@ import argparse
 import yaml as YAML
 from yaml.loader import SafeLoader as LOADER
 
+import os
+
+cwd = os.getcwd()
+fixed_search_string = 'project = CBL AND component in (iOS, LiteCore) AND type = Bug AND fixVersion  = 3.0.1  AND level = "Public" AND affectedVersion != Lithium AND resolution = Fixed ORDER BY component'
+
 
 def getConfigData(config_type):
-    with open('config/adoc_GenerateReleaseNoteIssueLists_config.yaml', 'r') as f:
+    with open('adoc_GenerateReleaseNoteIssueLists_config.yaml', 'r') as f:
         config = YAML.load(f, Loader=LOADER)
         return config[config_type]
 
@@ -37,13 +43,7 @@ def getParameters():
     params = getConfigData('params')
     args.mode = params['mode']
     args.release = params['release']
-
     return args
-
-
-
-
-fixed_search_string = 'project = CBL AND component in (iOS, LiteCore) AND type = Bug AND fixVersion  = 3.0.1  AND level = "Public" AND affectedVersion != Lithium AND resolution = Fixed ORDER BY component'
 
 
 def parse_arguments():
@@ -52,11 +52,7 @@ def parse_arguments():
   parser.add_argument("-r", "--release", help="Provide release number in m-m-m format")
   args = parser.parse_args()
   if args.mode==None:
-
     args = getParameters()
-    #
-    # print('no args')
-    # exit(9999)
   return args
 
 @dataclass
@@ -96,7 +92,7 @@ def is_Valid_Url(argURL):
       print(f'{e}')
       response = e.code
     else:
-      #  200-OK - Valid URL so lets get the data
+      #  200-OK - Valid URL so lets get the _adoc_input
       response = True
 
   return response
@@ -193,12 +189,12 @@ def composeAdocContent(argProductStubLists,
   local_stublist =[]
   local_list_type_stublist =[]
   fileroot = {
-              'android':'/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/android/pages/_partials',
-              'csharp': '/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/csharp/pages/_partials',
-              'java': '/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/java/pages/_partials',
-              'objc': '/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/objc/pages/_partials',
-              'swift': '/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/swift/pages/_partials',
-              'c': '/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/c/pages/_partials',
+              'android':f'{cwd}/cbl/modules/android/pages/_partials',
+              'csharp': f'{cwd}/cbl/modules/csharp/pages/_partials',
+              'java': f'{cwd}/cbl/modules/java/pages/_partials',
+              'objc': f'{cwd}/cbl/modules/objc/pages/_partials',
+              'swift': f'{cwd}/cbl/modules/swift/pages/_partials',
+              'c': f'{cwd}/cbl/modules/c/pages/_partials',
               }
   verbose = argVerbose==True
   if(len(argtag)>0): thisTag=argtag
@@ -210,9 +206,9 @@ def composeAdocContent(argProductStubLists,
 
     for component in thisProdComponents:
       if component == '':
-        filename = '/Users/ianbridge/CouchbaseDocs/bau/sgw/modules/root/pages/_partials/RelNoteIssues_{}.adoc'.format(product)
+        filename = f'{cwd}/sgw/modules/root/pages/_partials/RelNoteIssues_{product}.adoc'
       else:
-        filename = '/Users/ianbridge/CouchbaseDocs/bau/cbl/modules/RelNoteIssues_{}.adoc'.format(component)
+        filename = f'{cwd}/cbl/modules/RelNoteIssues_{component}.adoc'
       with open(filename,'w') as adocFile:
         if verbose:
           if component != '':
@@ -275,14 +271,14 @@ def main():
     # "KI":"https://issues.couchbase.com/issues/?jql=filter%20%3D%20ReleaseNotes-CBL-",
     # "Deprecated":"https://issues.couchbase.com/issues/?jql=filter%20%3D%20ReleaseNotes-CBL-"
   }
-  content_source ='/Users/ianbridge/theshed/pieshop/sauce/wranglebraces/example-jira-issues-list.html'
+  # content_source ='/Users/ianbridge/theshed/pieshop/sauce/wranglebraces/example-jira-issues-list.html'
   required_tag = 'tbody'
   # required_url='https://issues.couchbase.com/issues/?jql=filter%20%3D%20Lithium-RN-CBL-Android-Enhancements%20%20%20'
   required_url='https://issues.couchbase.com/issues/?jql=filter%20%3D%20Lithium-RN-CBL-NET-Enhancements%20%20'
 
   platform_stubs = {}
   product_stubs = {}
-  response = RESPONSE()
+  # response = RESPONSE()
   for product in Products:
     print(f"Processing product {product}")
     Components = ComponentsDict[product]
