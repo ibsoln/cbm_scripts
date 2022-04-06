@@ -22,7 +22,7 @@ def get_data(argFile):
     return text
 
 
-def  get_arguements():
+def  get_arguements(cwd):
     # Get the command line arguments and return to main() in usable form
     
     actual_processes = ['cbl', 'sgw', 'tutorials']
@@ -31,7 +31,7 @@ def  get_arguements():
     valid_targets = ['local', 'stage']
 
     arg_items = {
-      "-o": {"flag": "--out", "default": f"{os.getcwd()}/output/", "help": "Defines the output file path"},
+      "-o": {"flag": "--out", "default": f"{cwd}", "help": "Defines the _adoc_output file path"},
       "-p": {"flag": "--process", "default": "all",
              "help": "Defines components to be processed (sgw/cbl/tutorials/all)", "choices": valid_processes},
       "-b": {"flag": "--build", "default": "local", "help": "Select the target build site to check (ibsoln/staging)",
@@ -56,21 +56,22 @@ def  get_arguements():
 
 def main():
 
+    cwd = os.getcwd()
     # Folder holding antora site
-    roots = {"local": "/Users/ianbridge/CouchbaseDocs/ibsoln.github.io/local/",
-             "stage": "/Users/ianbridge/CouchbaseDocs/ibsoln.github.io/stage/"}
+    roots = {"local": f"{cwd}/local/",
+             "stage": f"{cwd}/stage/"}
 
     # Product components to include
     rootDirs = {"sgw": "sync-gateway/current/**",
                 "cbl": "couchbase-lite/current/**",
                 "tutorials": "tutorials/**"}
 
-    # output file names per component
-    outfiles = {"sgw": "adoc_diag_bad_xrefs_sgw.csv",
-                "cbl": "adoc_diag_bad_xrefs_cbl.csv",
-                "tutorial": "adoc_diag_bad_xrefs_tutorials.csv"}
+    # _adoc_output file names per component
+    outfiles = {"sgw": "_adoc_diag_bad_xrefs_sgw.csv",
+                "cbl": "_adoc_diag_bad_xrefs_cbl.csv",
+                "tutorial": "_adoc_diag_bad_xrefs_tutorials.csv"}
 
-    (build_site, process_list, outDir) = get_arguements()
+    (build_site, process_list, outDir) = get_arguements(cwd)
     if not build_site:
       exit(999)
 
@@ -86,7 +87,7 @@ def main():
 
     # for each selected component
     for i in process_list:
-        outfilename = f"{outDir}{outfiles.get(i)}"
+        outfilename = f"{outDir}/{outfiles.get(i)}"
         root_dir = f"{roots.get(build_site)}{rootDirs[i]}"
         cnt_processed = 0
         cnt_errors = 0

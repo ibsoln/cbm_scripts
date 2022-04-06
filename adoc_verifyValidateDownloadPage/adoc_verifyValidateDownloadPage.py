@@ -1,6 +1,6 @@
 program = {'name' : 'verifyValidateDownloadPage',
            'version' : '2.0',
-           'description' :'Validates all links scraped from the designated page and outputs results to a specified output file'}
+           'description' :'Validates all links scraped from the designated page and outputs results to a specified _adoc_output file'}
 # adoc_verifyValidateDownloadPage.py
 
 # Objective = Identify any embedded HREFS onthe specified page that do not point to functioning endpoints
@@ -20,14 +20,14 @@ def get_args():
 
     # Set default values
     arg_page = 'https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html'
-    arg_out = f"output/adoc_diag_href_tags_cbl.csv"
+    arg_out = f"_adoc_diag_href_tags_cbl.csv"
     arg_except = False
 
     parser = argparse.ArgumentParser()
     # BEGIN - COMMAND LINE PARAMETERS
-    parser.add_argument("-p", "--page", help="Define the page to be checked")
-    parser.add_argument("-o", "--out", help="Define the output file")
-    parser.add_argument("-e", "--exceptions", help="Report only on exceptions")
+    parser.add_argument("-p", "--page", help="Define the page to be checked", default=arg_page)
+    parser.add_argument("-o", "--out", help="Define the _adoc_output file", default=arg_out)
+    parser.add_argument("-e", "--exceptions", help="Report only on exceptions", default=True)
     # END - COMMAND LINE PARAMETERS
     args = parser.parse_args()
 

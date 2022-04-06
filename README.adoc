@@ -1,0 +1,55 @@
+= Using MobileScripts
+
+== Introduction
+
+== Running
+
+* adoc_collateJavaKotlinSnippets -- Collate the source modules for Java and Kotlin code into single snippets files
++
+--
+Run this in android/examples
+--
+
+* adoc_generateReleaseNotesIssueLists -- Generate issues lists for inclusion in release notes
++
+--
+Run this in the CouchbaseDocs/bau directory (the parent of sgw and cbl)
+
+*Parameters:*
+
+* --mode (-m) = all, sgw or cbl -- default = all
+* --out (-o) = output file -- default = `./_adoc_diag_href_tags_cbl.csv`
+
+[source, bash]
+----
+adoc_generateReleaseNotesIssueLists --mode sgw --release 3.0.0
+----
+--
+* adoc_yaml_parser -- run this in sgw/modules/assets/attachments
+* adoc_verifyValidateDownloadPage -- run this in within CouchbaseDocs/bau +
++
+--
+*Parameters:*
+
+* --page (-m) = all, sgw or cbl -- default = https://docs-staging.couchbase.com/couchbase-lite/current/c/gs-downloads.html
++
+Note that you cannot run this against the live page, it is blocked by anti-hacking measures
+* --out (-o) = output file -- default = `./_adoc_diag_href_tags_cbl.csv`
+--
+
+* adoc_validateXrefs -- Check for broken or malformed xrefs in rendered html pages
++
+--
+*Parameters*
+
+* --out (-o) -- define the _adoc_output file path, default = "./",
+* --process (-p) -- define the components to be processed (sgw/cbl/tutorials, or all), default = "all"
+* --build (-b) -- Select the target build site to check (local/stage), "default": "local"
+--
++
+
+[source, bash]
+----
+adoc_validateXrefs -p sgw
+----
+--

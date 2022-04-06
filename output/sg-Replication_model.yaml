@@ -271,8 +271,8 @@ properties:
     default: mandatory
     description: "**About**\n\n  Use `password` to provide the login password value\
       \ for the accredited user running this replication.\n\n**Behavior**\n\n  These\
-      \ details are used to authenticate credentials and approve access to data.\n\
-      \n  Once provided and recorded, the password data is redacted and will not be\
+      \ details are used to authenticate credentials and approve access to _adoc_input.\n\
+      \n  Once provided and recorded, the password _adoc_input is redacted and will not be\
       \ displayed in either the configuration file or Admin REST API. A string of\
       \ `****` will be displayed in its place.\n"
   purge_on_removal:
@@ -335,8 +335,8 @@ properties:
       \ string containing a valid URL for a (remote) Sync Gateway database.\n- an\
       \ object whose url property contains the Sync Gateway database URL.\n\n**Behavior**\n\
       \n  Dependent upon setting of **direction**.\n\n  If **direction** is :\n  -\
-      \ *pull*, 'remote' defines the remote cluster *from* which data is pulled\n\
-      \  - *push*, 'remote' defines the remote cluster *to* which data is pushed\n\
+      \ *pull*, 'remote' defines the remote cluster *from* which _adoc_input is pulled\n\
+      \  - *push*, 'remote' defines the remote cluster *to* which _adoc_input is pushed\n\
       \  - *pushAndPull*, 'remote' defines the *push* configuration.\n\n**Example**\n\
       \n```json\n\"remote\": \"http://www.example.com:4984/sample-database\",\n```\n"
   replication_id:
@@ -401,10 +401,10 @@ properties:
       **Behavior**
 
 
-      These details are used to authenticate credentials and approve access to data
+      These details are used to authenticate credentials and approve access to _adoc_input
 
 
-      Once provided and recorded, the username data is redacted and will not be displayed
+      Once provided and recorded, the username _adoc_input is redacted and will not be displayed
       in either the configuration file or Admin REST API. A string of `****` will
       be displayed in its place.
 

@@ -1,0 +1,5 @@
+params:
+  inDir: ./
+  outDir: ./
+  mode: all
+  release: 3.0.0

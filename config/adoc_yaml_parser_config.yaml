@@ -1,8 +1,8 @@
 
 params:
-  inDir: data/
+  inDir: _adoc_input/
   inFile: rest-api-admin
-  outDir: output/
+  outDir: _adoc_output/
   selectors:
   - Bootstrap_model
   - Database_model

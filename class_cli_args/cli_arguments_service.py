@@ -15,7 +15,7 @@ class cli_arguments_class:
 
         parser = argparse.ArgumentParser()
         # parser.add_argument("-p", "--page", help="Define the page to be checked")
-        # parser.add_argument("-o", "--out", help="Define the output file")
+        # parser.add_argument("-o", "--out", help="Define the _adoc_output file")
 
         for k, v in args.items():
             arg_string =  f"'{k}'"
@@ -25,10 +25,10 @@ class cli_arguments_class:
                 else:
                     this_arg = f'{k1} = '
                 arg_string = f'{arg_string}, {this_arg} "{v1}"'
-                print (arg_string)
+                # print (arg_string)
 
             cli = f"parser.add_argument({arg_string})"
-            print(cli)
+            # print(cli)
             eval(cli)
 
         self.cli_arguments = vars(parser.parse_args())

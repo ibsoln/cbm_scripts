@@ -2,7 +2,7 @@ import os
 
 class utils:
 
-  def getOutputFile( argName, argPath='data', argOverwriteFile=false, argOverwritePath=false):
+  def getOutputFile( argName, argPath='_adoc_input', argOverwriteFile=false, argOverwritePath=false):
     msg=''
     result=False
     if(len(argName)>0):
@@ -22,7 +22,7 @@ class utils:
     return result
   # ENDDEF getOutPutFile
 
-  def getOutputPath( argName, argPath='data'):
+  def getOutputPath( argName, argPath='_adoc_input'):
     msg=''
     result=False
     if(len(argName)>0):
