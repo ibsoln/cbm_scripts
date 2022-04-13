@@ -1,6 +1,3 @@
-program = {'name' : 'verifyValidateDownloadPage',
-           'version' : '2.0',
-           'description' :'Validates all links scraped from the designated page and outputs results to a specified _adoc_output file'}
 # adoc_verifyValidateDownloadPage.py
 
 # Objective = Identify any embedded HREFS onthe specified page that do not point to functioning endpoints
@@ -12,9 +9,32 @@ import requests
 import validators.url
 import web_page_service as ws
 import argparse
+from dataclasses import dataclass
+from my_dataclasses import cls_ProgramId as ProgramId
 
 
-# Command Line Parameters are as shown in 'get_args()' below
+
+
+@dataclass
+class ProgramId:
+    name: str
+    description: str
+    version: str = '1.0'
+    date: str = '22/04/06'
+
+    def print(self, verbose: bool = False):
+        _printstring = f'{self.name} ({self.version})'
+        if verbose:
+            _printstring = f'{_printstring}\n{self.description}\nDated: {self.date}'
+        print(_printstring)
+#
+# program = ProgramId(
+#     name ='verifyValidateDownloadPage',
+#     description = 'Validates all links scraped from the designated page and outputs results to a specified _adoc_output file',
+#     version = 2.0)
+
+
+    # Command Line Parameters are as shown in 'get_args()' below
 
 def get_args():
 
@@ -148,7 +168,7 @@ def main( ):
 
 
 if __name__ == "__main__":
-    print(f'Running {program}')
+    program.print()
     main()
 
 

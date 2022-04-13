@@ -1,0 +1,628 @@
+# Query: :param-tags: 
+# Flags: CaseSensitive
+# Including: *.adoc
+# Excluding: /Users/ianbridge/CouchbaseDocs/bau/genbin,
+# ContextLines: 1
+
+147 results - 33 files
+
+cbl • modules/android/pages/gs-build.adoc:
+  113  
+  114: // :param-tags: getting-started
+  115  // include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/c/pages/field-level-encryption.adoc:
+  165  ====
+  166: // :param-tags: replicator_property_encryptor_decryptor_sample
+  167  // include::{root-partials}block_tabbed_code_example.adoc[]
+
+  193  ====
+  194: // :param-tags: replicator_property_encryption
+  195  // include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-blob.adoc:
+  51  [#ex-blob]
+  52: :param-tags: blob
+  53  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-cert-pinning.adoc:
+  25  [#ex-use-blob]
+  26: :param-tags: certificate-pinning
+  27  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-conflict.adoc:
+  221  [#wx-conflict-resolver]
+  222: :param-tags: replication-conflict-resolver
+  223  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  288  [#ex-merge-props]
+  289: :param-tags: update-document-with-conflict-handler
+  290  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-database-encryption.adoc:
+  13  [#ex-sdb-encrypt]
+  14: :param-tags: database-encryption
+  15  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-database.adoc:
+   26  [#ex-init-cdl]
+   27: :param-tags: sdk-initializer
+   28  include::{root-partials}block_tabbed_code_example.adoc[]
+
+   65  .Open or create a database
+   66: :param-tags: new-database
+   67  include::{root-partials}block_tabbed_code_example.adoc[]
+
+   88  [#ex-dbclose]
+   89: :param-tags: close-database
+   90  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  145  .Increase Level of Database Log Messages
+  146: :param-tags: console-logging-db
+  147  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-dbreplica.adoc:
+  29  .Replication between Local Databases
+  30: :param-tags: database-replica
+  31  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-document.adoc:
+  145  
+  146: :param-tags: datatype_usage_createdb
+  147  include::{root-partials}block_tabbed_code.adoc[]
+
+  157  
+  158: :param-tags: datatype_usage_createdoc
+  159  include::{root-partials}block_tabbed_code.adoc[]
+
+  170  
+  171: :param-tags: datatype_usage_mutdict
+  172  include::{root-partials}block_tabbed_code.adoc[]
+
+  181  
+  182: :param-tags: datatype_usage_mutarray
+  183  include::{root-partials}block_tabbed_code.adoc[]
+
+  191  
+  192: :param-tags: datatype_usage_populate
+  193  include::{root-partials}block_tabbed_code.adoc[]
+
+  212  
+  213: :param-tags: datatype_usage_persist
+  214  include::{root-partials}block_tabbed_code.adoc[]
+
+  220  
+  221: :param-tags: datatype_usage_closedb
+  222  include::{root-partials}block_tabbed_code.adoc[]
+
+  229  
+  230: :param-tags: datatype_usage_release
+  231  include::{root-partials}block_tabbed_code.adoc[]
+
+  265  [#ex-date-getter]
+  266: :param-tags: date-getter
+  267  :param-leader: pass:q,a[This example sets the date on the `createdAt` property and reads it back using the {url-api-method-document-getdate} accessor method.]
+
+  284  [#ex-dict]
+  285: :param-tags: datatype_dictionary
+  286  // :param-leader: pass:q,a[Changes to the document are persisted to the database when the `save` method is called.]
+
+  293  [#ex-mutdict]
+  294: :param-tags: datatype_mutable_dictionary
+  295  // :param-leader: pass:q,a[Changes to the document are persisted to the database when the `save` method is called.]
+
+  308  [#ex-array]
+  309: :param-tags: datatype_array
+  310  // :param-leader: pass:q,a[Changes to the document are persisted to the database when the `save` method is called.]
+
+  316  [#ex-mutarray]
+  317: :param-tags: datatype_mutable_array
+  318  // :param-leader: pass:q,a[Changes to the document are persisted to the database when the `save` method is called.]
+
+  344  [#ex-persists-doc]
+  345: :param-tags: initializer
+  346  :param-leader: pass:q,a[The following code example creates a document and persists it to the database.]
+
+  375  [#ex-update-doc]
+  376: :param-tags: update-document
+  377  :param-leader: pass:q,a[Changes to the document are persisted to the database when the `save` method is called.]
+
+  393  [#ex-conv-doc]
+  394: :param-tags: to-dictionary;to-json
+  395  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  411  [#ex-batch-ops]
+  412: :param-tags: batch
+  413  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  428  [#ex-doc-events]
+  429: :param-tags: document-listener
+  430  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  474  [#ex-set-doc-exp]
+  475: :param-tags: document-expiration
+  476  :param-leader: This example sets the TTL for a document to 5 minutes from the current time.
+
+  544  [#ex-array]
+  545: :param-tags: tojson-array
+  546  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  572  .Blobs as JSON strings
+  573: :param-tags: tojson-blob
+  574  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  593  .Dictionaries as JSON strings
+  594: :param-tags: tojson-dictionary
+  595  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  613  [#ex-document]
+  614: :param-tags: query-get-all;tojson-document
+  615  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-fts.adoc:
+  30  [#ex-indexbuilder]
+  31: :param-tags: fts-index
+  32  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  45  [#ex-indexbuilder]
+  46: :param-tags: fts-query
+  47  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  57  [#ex-indexbuilder-queyrbuilder]
+  58: :param-tags: fts-index_Querybuilder
+  59  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  69  [#ex-indexbuilder]
+  70: :param-tags: fts-query_Querybuilder
+  71  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  91  // [#ex-use-build-index]
+  92: // :param-tags: fts-query_Querybuilder
+  93  // include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-indexing.adoc:
+  51  // [#ex-indexbuilder]
+  52: // :param-tags: fts-index
+  53  // include::{root-partials}block_tabbed_code_example.adoc[]
+
+  57  // [#ex-indexbuilder]
+  58: // :param-tags: fts-index
+  59  // include::{root-partials}block_tabbed_code_example.adoc[]
+
+  86  
+  87: :param-tags: query-index
+  88  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  98  
+  99: :param-tags: query-index_Querybuilder
+  100  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-logging.adoc:
+   99  :param-leader: This example enables and defines console-based logging settings.
+  100: :param-tags: console-logging
+  101  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  138  .Enabling file logging
+  139: :param-tags: file-logging
+  140  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  165  .Implementing logger interface
+  166: :param-tags: custom-logging
+  167  :param-leader: pass:q,a[Here we introduce the code that implements the {url-api-class-log-custom} interface.]
+
+  173  .Enabling custom logging
+  174: :param-tags: set-custom-logging
+  175  :param-leader: pass:q,a[This example show how to enable the custom logger from <<eg-impl-log>>.]
+
+  259  .Enable verbose logging on a domain
+  260: :param-tags: logging
+  261  :param-leader: The following example enables `verbose` logging for the `replicator` and `query` domains.
+
+cbl • modules/ROOT/pages/_partials/commons/common-p2psync-websocket-manage-tls-id.adoc:
+   57  --
+   58: :param-tags: p2p-tlsid-check-keychain
+   59  include::{root-partials}block_tabbed_code.adoc[]
+
+   65  --
+   66: :param-tags: p2p-tlsid-check-bundled
+   67  include::{root-partials}block_tabbed_code.adoc[]
+
+   73  --
+   74: :param-tags: p2p-tlsid-import-from-bundled
+   75  include::{root-partials}block_tabbed_code.adoc[]
+
+   82  --
+   83: :param-tags: p2p-tlsid-store-in-keychain
+   84  include::{root-partials}block_tabbed_code.adoc[]
+
+   91  --
+   92: :param-tags: p2p-tlsid-return-id-from-keychain
+   93  include::{root-partials}block_tabbed_code.adoc[]
+
+  100  // include::{root-partials}p2p-api-tlsid-{param-platform}.adoc[tag=method-delete]
+  101: :param-tags: p2p-tlsid-delete-id-from-keychain
+  102  include::{root-partials}block_tabbed_code.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-p2psync-websocket-using-active.adoc:
+   42  .Replication configuration and initialization
+   43: :param-tags: p2p-act-rep-func;!autopurge-override
+   44  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  135  .Basic Authentication
+  136: :param-tags: p2p-act-rep-auth
+  137  :param-leader: This example shows basic authentication using user name and password:
+
+  159  [#configuring-client-authentication]
+  160: :param-tags: p2p-tlsid-tlsidentity-with-label
+  161  :param-leader: This example shows client certificate authentication using an identity from secure storage.
+
+cbl • modules/ROOT/pages/_partials/commons/common-p2psync-websocket-using-passive.adoc:
+   47  [#simple-listener-initialization]
+   48: :param-tags: listener-initialize
+   49  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  108  [#ex-locdb]
+  109: :param-tags: listener-config-db
+  110  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  125  [#ex-port]
+  126: :param-tags: listener-config-port
+  127  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  142  .Specify a Network Interface to Use
+  143: :param-tags: listener-config-netw-iface
+  144  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  161  .Identify available network interfaces
+  162: :param-tags: listener-get-network-interfaces
+  163  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  177  .Enable delta sync
+  178: :param-tags: listener-config-delta-sync
+  179  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  225  :param-leader: Import an identity from a secure key and certificate data source.
+  226: :param-tags: listener-config-tls-enable;listener-config-tls-id-full;!listener-config-tls-id-SelfSigned;!listener-config-tls-id-anon
+  227  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  237  [#ex-create-tls-id]
+  238: :param-tags: listener-config-tls-enable;listener-config-tls-id-full;!listener-config-tls-id-caCert;!listener-config-tls-id-anon
+  239  :param-leader: pass:q,a[Create a TLSIdentity for the server using convenience API. +
+
+  253  [#ex-anon-tls-id]
+  254: :param-tags: listener-config-tls-enable;listener-config-tls-id-anon
+  255  :param-leader: pass:q,a[This example uses an _anonymous_ self signed certificate. +
+
+  301  .Password authentication
+  302: :param-tags: listener-config-client-auth-pwd
+  303  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  325  [#ex-set-cert-auth]
+  326: :param-tags: listener-config-client-auth-root, indent=0]
+  327  :param-leader: pass:q,a[Configure the server (listener) to authenticate the client against a list of one or more certificates provided by the server to the the {url-api-class-ListenerCertificateAuthenticator}.]
+
+  339  [#ex-use-app-logic]
+  340: :param-tags: listener-config-client-auth-lambda
+  341  :param-leader: pass:q,a[Configure the server (listener) to authenticate the client using user-supplied logic.]
+
+  364  .Deleting TLS Identities
+  365: :param-tags: p2p-tlsid-delete-id-from-keychain
+  366  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  428  .Initialize and start listener
+  429: :param-tags: listener-start
+  430  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  445  [#get-connection-counts]
+  446: :param-tags: listener-status-check
+  447  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  458  .Stop listener using `stop` method
+  459: :param-tags: listener-stop
+  460  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-p2psync-websocket.adoc:
+  132  [#ex-simple-listener]
+  133: :param-tags: listener-simple
+  134  :param-leader: pass:q,a[This simple listener configuration will give you a listener ready to participate in an encrypted synchronization with a replicator providing a valid user name and password.]
+
+  145  [#ex-simple-replicator]
+  146: :param-tags: replicator-simple
+  147  :param-leader: pass:q,a[This simple replicator configuration will give you an encrypted, bi-directional peer-to-peer synchronization with automatic conflict resolution.]
+
+cbl • modules/ROOT/pages/_partials/commons/common-prebuilt-database.adoc:
+  140  [#lbl-code]
+  141: :param-tags: prebuilt-database
+  142  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-query-live-query.adoc:
+  18  [#ex-qry-start]
+  19: :param-tags: live-query
+  20  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  28  [#ex-qry-stop]
+  29: :param-tags: stop-live-query
+  30  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-query-n1ql-mobile.adoc:
+    40  [#ex-samplerun]
+    41: :param-tags: query-syntax-n1ql
+    42  include::partial$block_tabbed_code_example.adoc[]
+
+  2021  [#ex-sample-params]
+  2022: :param-tags: query-syntax-n1ql-params
+  2023  include::partial$block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-query-predictive.adoc:
+  21  
+  22: :param-tags: predictive-model
+  23  include::{root-partials}block_tabbed_code.adoc[]
+
+  32  
+  33: :param-tags: register-model
+  34  include::{root-partials}block_tabbed_code.adoc[]
+
+  51  
+  52: :param-tags: predictive-query-value-index
+  53  include::{root-partials}block_tabbed_code.adoc[]
+
+  62  
+  63: :param-tags: predictive-query-predictive-index
+  64  include::{root-partials}block_tabbed_code.adoc[]
+
+  70  
+  71: :param-tags: predictive-query
+  72  include::{root-partials}block_tabbed_code.adoc[]
+
+  82  
+  83: :param-tags: unregister-model
+  84  include::{root-partials}block_tabbed_code.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-query-resultsets.adoc:
+  118  .Access All Properties
+  119: :param-tags: query-access-all
+  120  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  157  .Access by ID
+  158: :param-tags: query-access-id
+  159  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  191  [#ex-acc-specific]
+  192: :param-tags: query-access-props
+  193  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-query-troubleshooting.adoc:
+   36  .Using Query Explain in App
+   37: :param-tags: query-explain-all
+   38  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  198  .Like with Wildcard Prefix
+  199: :param-tags: query-explain-like
+  200  include::{root-partials}block_tabbed_code.adoc[]
+
+  215  [#like-no-wild-pfx-qry]
+  216: :param-tags: query-explain-nopfx
+  217  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  234  [#use-like-based-queries]
+  235: :param-tags: query-explain-function
+  236  include::{root-partials}block_tabbed_code.adoc[]
+
+  250  .Query
+  251: :param-tags: query-explain-nofunction
+  252  include::{root-partials}block_tabbed_code.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-querybuilder-jsonresult.adoc:
+  3  .Using JSON Results
+  4: :param-tags: query-access-json
+  5  :param-leader: pass:q,a[Use {url-api-method-result-toJSON} to transform your result string into a JSON string, which can easily be serialized or used as required in your application. See <<ex-json>> for a working example.]
+
+cbl • modules/ROOT/pages/_partials/commons/common-querybuilder.adoc:
+   76  .Creating a New Index
+   77: :param-tags: query-index
+   78  :param-leader: This example creates a new index for the `type` and `name` properties in the <<ex-data-format>>.
+
+  109  [#ex-select-all]
+  110: :param-tags: query-select-all
+  111  :param-leader: pass:q,a[This query shows how to retrieve all properties from all documents in your database.]
+
+  139  .Using SELECT to Retrieve Specific Properties
+  140: :param-tags: query-select-props
+  141  :param-leader: pass:q,a[In this query we retrieve and then print the `_id`, `type` and `name` properties of each document.]
+
+  189  .Using Where
+  190: :param-tags: query-where
+  191  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  212  
+  213: :param-tags: query-collection-operator-contains
+  214  include::{root-partials}block_tabbed_code.adoc[]
+
+  221  
+  222: :param-tags: query-collection-operator-in
+  223  include::{root-partials}block_tabbed_code.adoc[]
+
+  244  [#ex-like-case-insensitive]
+  245: :param-tags: query-like-operator
+  246  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  265  [#ex-wldcd-match]
+  266: :param-tags: query-like-operator-wildcard-match
+  267  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  279  [#ex-wldcd-char-match]
+  280: :param-tags: query-like-operator-wildcard-character-match
+  281  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  293  .Using Regular Expressions
+  294: :param-tags: query-regex-operator,indent=0]
+  295  :param-leader: This example returns documents with a `type` of "landmark" and a `name` property that matches any string that begins with "eng" and ends in the letter "e".
+
+  312  :param-leader: pass:q,a[This example shows how to query deleted documents in the database. It returns is an array of key-value pairs.]
+  313: :param-tags: query-deleted-documents
+  314  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  325  [#ex-join]
+  326: :param-tags: query-join
+  327  :param-leader: pass:q,a[This example JOINS the document of type `route` with documents of type `airline` using the document ID (`_id`) on the _airline_ document and `airlineid` on the _route_ document.]
+
+  352  .Query using GroupBy
+  353: :param-tags: query-groupby
+  354  :param-leader: pass:q,a[This example shows a query that selects all airports with an altitude above 300ft. The output (a count, $1) is grouped by country, within timezone.]
+
+  376  .Query using OrderBy
+  377: :param-tags: query-orderby
+  378  :param-leader: pass:q,a[This example shows a query that returns documents of type equal to "hotel" sorted in ascending order by the value of the title property.]
+
+  464  [#ex-all-qry]
+  465: :param-tags: query-syntax-all
+  466  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  494  [#ex-all-acc]
+  495: :param-tags: query-access-all
+  496  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  511  [#ex-specific-qry]
+  512: :param-tags: query-syntax-props
+  513  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  538  [#ex-specific-acc]
+  539: :param-tags: query-access-props
+  540  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  551  [#ex-id-qry]
+  552: :param-tags: query-syntax-id
+  553  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  577  [#ex-id-acc]
+  578: :param-tags: query-access-id
+  579  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  591  [#ex-count-qry]
+  592: :param-tags: query-syntax-count-only
+  593  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  618  .Using Returned Document Properties (Count)
+  619: :param-tags: query-access-count-only
+  620  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  631  .Query Pagination
+  632: :param-tags: query-syntax-pagination
+  633  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  673  [#int-pred-model]
+  674: :param-tags: predictive-model
+  675  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  687  [#reg-pred-model]
+  688: :param-tags: register-model
+  689  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  709  [#crt-val-index]
+  710: :param-tags: predictive-query-value-index
+  711  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  721  [#crt-val-index]
+  722: :param-tags: predictive-query-predictive-index
+  723  :param-leader: pass:q,a[Here we create a predictive index from the `label` value of the prediction result.]
+
+  734  [#crt-val-index]
+  735: :param-tags: predictive-query
+  736  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  748  [#dereg-val-index]
+  749: :param-tags: unregister-model
+  750  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication-cfg-network-interface.adoc:
+   9  .Choose Network Interface
+  10: :param-tags: sgw-act-rep-network-interface
+  11  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication-cfg-retry.adoc:
+  71  [#ex-repl-retry]
+  72: :param-tags: replication-retry-config
+  73  :param-leader:
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication-cfg-sync-mode.adoc:
+  23  .Configure replicator type and mode
+  24: :param-tags: p2p-act-rep-config-type;p2p-act-rep-config-cont
+  25  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication-cfg-tgt.adoc:
+  25  .Add Target to Configuration
+  26: :param-tags: sgw-act-rep-initialize
+  27  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication-init.adoc:
+  11  .Initialize and run replicator
+  12: :param-tags: p2p-act-rep-start-full;!p2p-act-rep-add-change-listener
+  13  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication-monitor.adoc:
+  186  [#ex-reg-doc-listener]
+  187: :param-tags: add-document-replication-listener,indent=0]
+  188  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  193  .Stop document listener
+  194: :param-tags: remove-document-replication-listener
+  195  :param-leader: This code snippet shows how to stop the document listener using the token from the previous example.
+
+  222  .Use Pending Document ID API
+  223: :param-tags: replication-pendingdocuments
+  224  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication-stop.adoc:
+  18  .Stop replicator
+  19: :param-tags: p2p-act-rep-stop
+  20  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-sgw-replication.adoc:
+   81  .Replication configuration and initialization
+   82: :param-tags: p2p-act-rep-func
+   83  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  229  [#ex-base-auth]
+  230: :param-tags: basic-authentication
+  231  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  247  [#ex-session-auth]
+  248: :param-tags: session-authentication
+  249  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  263  [#ex-cust-hdr]
+  264: :param-tags: replication-custom-header
+  265  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  278  
+  279: :param-tags: replication-push-filter
+  280  // pass:q,a,m[include::{root-partials}block_tabbed_code.adoc[]]
+
+  301  
+  302: :param-tags: replication-pull-filter
+  303  include::{root-partials}block_tabbed_code.adoc[]
+
+  454  [#ex-set-auto-purge]
+  455: :param-tags: autopurge-override
+  456  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  538  [#ex-repl-ckpt]
+  539: :param-tags: replication-reset-checkpoint
+  540  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  568  .Monitoring for network errors
+  569: :param-tags: replication-error-handling
+  570  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  646  [#ex-crt-pinning]
+  647: :param-tags: certificate-pinning
+  648  include::{root-partials}block_tabbed_code_example.adoc[]
+
+  667  .Set logging verbosity
+  668: :param-tags: replication-logging
+  669  include::{root-partials}block_tabbed_code_example.adoc[]
+
+cbl • modules/ROOT/pages/_partials/commons/common-upgrade.adoc:
+  69  [#ex-get-att]
+  70: :param-tags: 1x-attachment
+  71  include::{root-partials}block_tabbed_code_example.adoc[]
